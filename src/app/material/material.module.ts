@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms'
 
 const MaterialComponents = [
   CommonModule, 
@@ -13,6 +14,7 @@ const MaterialComponents = [
   MatCheckboxModule, 
   MatCardModule,
   MatInputModule,
+  ReactiveFormsModule
   
 ]
 @NgModule({

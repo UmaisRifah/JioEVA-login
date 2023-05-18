@@ -1,0 +1,75 @@
+<section class="background-image signup">
+  <section class="alcx">
+    <section class="bg1">
+      <section
+        class="alcc"
+        style="min-height: 90%; max-height: 90%; overflow-y: auto; height: 90%"
+      >
+        <div class="alc" style="margin-top: 0%">
+          <header style="padding-top: 2%">
+            <div class="jioeva_logo">
+              <img alt="JioEVA logo" src="../assets/eva_logo_black.png" />
+            </div>
+          </header>
+
+          <section style="min-width: 190px; padding: auto">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <mat-form-field style="width: 100%">
+                <mat-label>Name</mat-label>
+                <input type="name" matInput formControlName="name" />
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label style="padding-left: 35px; font-size: 17px"
+                  >Phone no</mat-label
+                >
+                <div class="prefix-container">
+                  <span matPrefix>+91</span
+                  ><input matInput type="number" formControlName="number" />
+                </div>
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label>Email ID</mat-label>
+                <input type="email" matInput formControlName="email" />
+                <mat-error
+                  *ngIf="
+                    signupForm.controls['email'].touched &&
+                    signupForm.controls['email'].invalid
+                  "
+                >
+                  Please enter a valid email address.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" />
+              </mat-form-field>
+              <mat-form-field style="width: 100%">
+                <mat-label>Re-enter Password</mat-label>
+                <input type="password" matInput formControlName="repassword" />
+                <mat-error
+                  *ngIf="
+                    signupForm.controls['repassword'].touched &&
+                    signupForm.controls['repassword'].invalid
+                  "
+                >
+                  Passwords do not match.
+                </mat-error>
+              </mat-form-field>
+
+              <div class="button-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="custom-button"
+                  [disabled]="signupForm.invalid"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>

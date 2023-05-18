@@ -1,6 +1,6 @@
 {
-  "name": "task",
-  "version": "0.0.0",
+  "name": "jioeva_login_signup",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -36,5 +36,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.0.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.",
+  "main": "index.js",
+  "author": "Rifah",
+  "license": "ISC"
 }

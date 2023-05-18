@@ -1,177 +1,28 @@
-<body>
-  <section class="alcx">
-    <section class="bg1">
-      <section
-        class="alcc"
-        style="min-height: 90%; max-height: 90%; overflow-y: auto; height: 90%"
+<body class="background-image">
+  <router-outlet></router-outlet>
+  <footer _ngcontent-xad-c1="" class="jio-footer">
+    <div _ngcontent-xad-c1="" class="footer-container">
+      <img
+        _ngcontent-xad-c1=""
+        alt="Powered by Jio"
+        class="center"
+        height="25"
+        src="../assets/jio-powered-by.png"
+      /><a
+        _ngcontent-xad-c1=""
+        class="link"
+        target="_blank"
+        href="https://hellojiodiag.blob.core.windows.net/eva/TnC.pdf"
       >
-        <div class="alc" style="margin-top: 0%">
-          <header style="padding-top: 2%">
-            <div class="jioeva_logo">
-              <img alt="JioEVA logo" src="../assets/eva_logo_black.png" />
-            </div>
-          </header>
-
-          <section style="min-width: 190px; padding: auto">
-            <mat-form-field style="width: 90%">
-              <mat-label>Email ID</mat-label>
-              <input
-                style="
-                  border: transparent !important;
-                  background-color: transparent !important;
-                "
-                type="email"
-                matInput
-                placeholder="Email"
-                formControlName="email"
-              />
-            </mat-form-field>
-            <mat-form-field style="width: 90%">
-              <mat-label>Password</mat-label>
-              <input
-                type="password"
-                matInput
-                placeholder="Password"
-                formControlName="password"
-              />
-            </mat-form-field>
-
-            <!-- <div>
-              <button mat-flat-button class="signin-b">Sign In</button>
-            </div>
-            <div>
-              <a mat-flat-button href="https://www.google.com/" target="_blank"
-                >Link</a
-              >
-            </div> -->
-
-            <div class="remember-forgot">
-              <mat-checkbox
-                formControlName="rememberMe"
-                class="remember-checkbox"
-                style="color: #707070"
-                >Remember me</mat-checkbox
-              >
-              <a class="forgot-link" href="#">Forgot password?</a>
-            </div>
-
-            <div _ngcontent-mvl-c2="" class="field-actions">
-              <button
-                style="background-color: #fcb542; color: aliceblue"
-                _ngcontent-mvl-c2=""
-                class="btn-actions-sign-in mat-raised-button mat-button-base"
-                mat-raised-button=""
-                type="button"
-                ng-reflect-disabled="false"
-              >
-                <span class="mat-button-wrapper"
-                  ><!--bindings={
-  "ng-reflect-ng-if": "true",
-  "ng-reflect-ng-if-else": "[object Object]"
-}--><span _ngcontent-mvl-c2="" class="ng-star-inserted"> Sign In </span
-                  ><!----></span
-                >
-                <div
-                  class="mat-button-ripple mat-ripple"
-                  matripple=""
-                  ng-reflect-centered="false"
-                  ng-reflect-disabled="false"
-                  ng-reflect-trigger="[object HTMLButtonElement]"
-                ></div>
-                <div class="mat-button-focus-overlay"></div>
-              </button>
-            </div>
-
-            <div class="nu">
-              <label> New User? </label
-              ><a class="link" href="/portal/register"> Sign Up </a>
-            </div>
-            <!-- <div class="button" style="padding-left: 16%">
-              Button is disabled(not clickable), if our LoginForm contains Validation Errors
-              <button type="submit">Login</button>
-            </div> -->
-            <!-- <form autocomplete="off">
-              <mat-form-field>
-                <mat-label>Input</mat-label>
-                <input matInput />
-              </mat-form-field>
-            </form> -->
-          </section>
-        </div>
-      </section>
-      <footer _ngcontent-xad-c1="" class="jio-footer">
-        <div _ngcontent-xad-c1="" class="footer-container">
-          <img
-            _ngcontent-xad-c1=""
-            alt="Powered by Jio"
-            class="center"
-            height="25"
-            src="../assets/jio-powered-by.png"
-          /><a
-            _ngcontent-xad-c1=""
-            class="link"
-            target="_blank"
-            href="https://hellojiodiag.blob.core.windows.net/eva/TnC.pdf"
-          >
-            Terms &amp; Conditions </a
-          ><a
-            _ngcontent-xad-c1=""
-            class="link"
-            target="_blank"
-            href="https://hellojiodiag.blob.core.windows.net/eva/PrivacyPolicy.pdf"
-          >
-            Privacy
-          </a>
-        </div>
-      </footer>
-    </section>
-  </section>
-  <!-- <div class="authenticate">
-  <img
-  src="../assets/eva_logo_black.png"
-  alt="eva_logo"
-  />
-</div> -->
+        Terms &amp; Conditions </a
+      ><a
+        _ngcontent-xad-c1=""
+        class="link"
+        target="_blank"
+        href="https://hellojiodiag.blob.core.windows.net/eva/PrivacyPolicy.pdf"
+      >
+        Privacy
+      </a>
+    </div>
+  </footer>
 </body>
-
-<!-- <mat-form-field _c2>
-                <div class="mffw">
-                  <div class="mfff">
-                    <div class="mffi">
-                      <input
-                        autocomplete="off"
-                        autofocus=""
-                        class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored ng-pristine ng-valid ng-touched"
-                        matinput=""
-                        type="email"
-                        ng-reflect-name="email"
-                        ng-reflect-placeholder="Email ID"
-                        ng-reflect-type="email"
-                        id="mat-input-0"
-                        placeholder="Email ID"
-                        aria-invalid="false"
-                        aria-required="false"
-                      />
-                      <span class="mfflw">
-                        <label
-                          class="mat-form-field-label ng-tns-c3-0 ng-star-inserted"
-                          ng-reflect-ng-switch="false"
-                          ng-reflect-disabled="true"
-                          id="mat-form-field-label-1"
-                          for="mat-input-0"
-                          aria-owns="mat-input-0"
-                        >
-                          <span class="ng-tns-c3-0 ng-star-inserted">
-                            Email ID
-                          </span>
-                        </label>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </mat-form-field>
-              <mat-form-field _c2>
-                <div class="mffw">
-                  <div class="mfff"></div>
-                </div>
-              </mat-form-field> -->

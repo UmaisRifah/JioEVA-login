@@ -1,0 +1,80 @@
+<section class="background-image login">
+  <section class="alcx">
+    <section class="bg1">
+      <section
+        class="alcc"
+        style="min-height: 90%; max-height: 90%; overflow-y: auto; height: 90%"
+      >
+        <div class="alc" style="margin-top: 0%">
+          <header style="padding-top: 2%">
+            <div class="jioeva_logo">
+              <img alt="JioEVA logo" src="../assets/eva_logo_black.png" />
+            </div>
+          </header>
+
+          <section style="min-width: 190px; padding: auto">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <mat-form-field style="width: 90%">
+                <mat-label>Email ID</mat-label>
+                <input type="email" matInput formControlName="email" required />
+                <mat-error
+                  *ngIf="
+                    loginForm.controls['email'].invalid &&
+                    loginForm.controls['email'].touched
+                  "
+                >
+                  Email is required.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field style="width: 90%">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.controls['password'].invalid &&
+                    loginForm.controls['password'].touched
+                  "
+                >
+                  Password is required.
+                </mat-error>
+              </mat-form-field>
+
+              <div class="remember-forgot">
+                <mat-checkbox
+                  formControlName="rememberMe"
+                  class="remember-checkbox"
+                  style="color: #707070"
+                  (change)="onRememberMeChange($event)"
+                  >Remember me</mat-checkbox
+                >
+                <a class="forgot-link" href="#">Forgot password?</a>
+              </div>
+
+              <div class="button-container">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="custom-button"
+                  [disabled]="loginForm.invalid"
+                >
+                  Sign In
+                </button>
+              </div>
+
+              <div class="nu">
+                <label> New User? </label
+                ><a class="link" routerLink="/signup"> Sign Up </a>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>
