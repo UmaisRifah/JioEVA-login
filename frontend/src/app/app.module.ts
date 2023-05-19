@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './MyComponents/login/login.component';
 import { SignupComponent } from './MyComponents/signup/signup.component';
 import { DashboardComponent } from './MyComponents/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DashboardComponent } from './MyComponents/dashboard/dashboard.component
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

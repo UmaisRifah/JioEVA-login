@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -23,21 +24,51 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    // Handle form submission logic here
-        if (this.signupForm.valid) {
+    console.log('Submitting signup form');
+
+    if (this.signupForm.valid) {
+      console.log('Form is valid');
+
       const name = this.signupForm.value.name;
       const number = this.signupForm.value.number;
       const email = this.signupForm.value.email;
       const password = this.signupForm.value.password;
       const repassword = this.signupForm.value.repassword;
 
-      console.log('Name:', name);
-      console.log('Phone Number:', number);
-      console.log('Email:', email);
-      console.log('Password:', password);
-      console.log('Re-written Password:',repassword);
+      const credentials = {
+        name: name,
+        number: number,
+        email: email,
+        password: password,
+        repassword: repassword,
+      };
+
+      console.log('Sending signup request');
+
+      // Send the form data to the backend using HttpClient
+      this.http.post('http://localhost:3000/api/signup', credentials)
+        .pipe(
+          catchError((error) => {
+            console.error('Signup error:', error.error);
+            console.log('Status code:', error.status);
+            throw error;
+          })
+        )
+        .subscribe((response: any) => {
+          // Handle the success response from the backend
+          console.log('Signup success:', response);
+          if (response.redirectUrl) {
+            window.location.href = response.redirectUrl;
+          }
+          // Perform any further actions, such as showing a success message, redirecting, etc.
+        });
+
+      // Reset the form
+      this.signupForm.reset();
+    } else {
+      console.log('Form is invalid');
+    }
   }
-}
 
   passwordMatchValidator(control: FormControl) {
     const password = control.root.get('password');
