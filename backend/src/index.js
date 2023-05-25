@@ -4,7 +4,6 @@ const path = require("path");
 const distPath = path.join(__dirname, '../../frontend/dist/task');
 const collection = require("./mongodb");
 const cors = require('cors');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -16,7 +15,9 @@ app.post('/api/login', async (req, res) => {
         const check = await collection.findOne({ email: req.body.email });
 
         if (check && check.password === req.body.password) {
-            res.send({ redirectUrl: 'http://localhost:4200/dashboard' });
+            if (check && check.otp === req.body.otp) {
+                res.send({ redirectUrl: 'http://localhost:4200/dashboard' });
+            }
         } else {
             res.send("Wrong password");
         }
@@ -30,34 +31,29 @@ app.post('/api/signup', async (req, res) => {
     const number = req.body.number;
     const email = req.body.email;
     const password = req.body.password;
+    otp_user = Math.floor(100000 + Math.random() * 900000).toString(); // Assign value to otp_user
 
-    // Perform any necessary processing or validation with the received form data
-
-    // Example response
     const data = {
         name: name,
         number: number,
         email: email,
-        password: password
+        password: password,
+        otp: otp_user
     };
 
     try {
-        // Insert the data into the collection using Mongoose's insertMany method
         await collection.insertMany([data]);
 
-        // Render the "home" view if insertion is successful
-        res.send({ redirectUrl: 'http://localhost:4200/dashboard' });
+        res.send({ otp: otp_user });
     } catch (error) {
-        // Handle any error that occurred during insertion
         console.error(error);
         res.send("An error occurred during signup.");
     }
 });
 
-// Serve the static files from the Angular app
+
 app.use(express.static(distPath));
 
-// Catch-all route for Angular application
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../../frontend/dist/task/index.html')));
 
 app.listen(3000, () => {

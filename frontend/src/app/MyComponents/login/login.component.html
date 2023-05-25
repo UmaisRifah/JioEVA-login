@@ -45,6 +45,24 @@
                 </mat-error>
               </mat-form-field>
 
+              <mat-form-field style="width: 90%">
+                <mat-label>Unique OTP</mat-label>
+                <input
+                  type="otp"
+                  matInput
+                  formControlName="otp"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    loginForm.controls['otp'].invalid &&
+                    loginForm.controls['otp'].touched
+                  "
+                >
+                  OTP is required.
+                </mat-error>
+              </mat-form-field>
+
               <div class="remember-forgot">
                 <mat-checkbox
                   formControlName="rememberMe"

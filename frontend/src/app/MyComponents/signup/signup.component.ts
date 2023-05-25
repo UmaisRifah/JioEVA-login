@@ -10,6 +10,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  response: any;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
@@ -26,6 +27,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     console.log('Submitting signup form');
 
+
     if (this.signupForm.valid) {
       console.log('Form is valid');
 
@@ -34,13 +36,15 @@ export class SignupComponent implements OnInit {
       const email = this.signupForm.value.email;
       const password = this.signupForm.value.password;
       const repassword = this.signupForm.value.repassword;
+      
+
 
       const credentials = {
         name: name,
         number: number,
         email: email,
         password: password,
-        repassword: repassword,
+        repassword: repassword
       };
 
       console.log('Sending signup request');
@@ -57,14 +61,12 @@ export class SignupComponent implements OnInit {
         .subscribe((response: any) => {
           // Handle the success response from the backend
           console.log('Signup success:', response);
-          if (response.redirectUrl) {
-            window.location.href = response.redirectUrl;
-          }
+          this.response = response;
+          
           // Perform any further actions, such as showing a success message, redirecting, etc.
         });
 
       // Reset the form
-      this.signupForm.reset();
     } else {
       console.log('Form is invalid');
     }

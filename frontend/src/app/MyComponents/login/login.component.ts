@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      otp: ['', Validators.required],
       rememberMe: [false]
     });
   }
@@ -31,11 +32,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
+      const otp = this.loginForm.value.otp;
       const rememberMe = this.loginForm.value.rememberMe;
 
       const credentials = {
         email: email,
         password: password,
+        otp: otp,
         rememberMe: rememberMe
       };
 
