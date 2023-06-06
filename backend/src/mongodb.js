@@ -1,12 +1,22 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/JioEVA")
+const isDocker = process.env.DOCKER_ENV === 'true';
+
+let connectionString;
+
+if (isDocker) {
+    connectionString = 'mongodb://host.docker.internal:27017/JioEVA';
+} else {
+    connectionString = 'mongodb://localhost:27017/JioEVA';
+}
+
+mongoose.connect(connectionString)
     .then(() => {
-        console.log("mongodb connected");
+        console.log('MongoDB connected');
     })
-    .catch(() => {
-        console.log("failed to connect");
-    })
+    .catch((error) => {
+        console.log('Failed to connect to MongoDB:', error);
+    });
 
 const LogInSchema = new mongoose.Schema({
     name: {
@@ -20,19 +30,18 @@ const LogInSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    otp:{
+    otp: {
         type: String,
-        required: true,
-
+        required: true
     }
-})
+});
 
-const collection = new mongoose.model("user", LogInSchema)
+const collection = mongoose.model("user", LogInSchema);
 
-module.exports = collection
+module.exports = collection;

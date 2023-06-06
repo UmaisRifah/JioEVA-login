@@ -16,7 +16,7 @@ app.post('/api/login', async (req, res) => {
 
         if (check && check.password === req.body.password) {
             if (check && check.otp === req.body.otp) {
-                res.send({ redirectUrl: 'http://localhost:4200/dashboard' });
+                res.send({ redirectUrl: '/dashboard' });
             }
         } else {
             res.send("Wrong password");
